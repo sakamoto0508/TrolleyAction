@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private InputBuffer _inputBuffer;
     private PlayerData _playerData;
     private PlayerMove _playerMove;
+    private PlayerJump _playerJump;
     private GroundCheck _groundCheck;
 
     private void Awake()
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour
         _inputBuffer = GetComponent<InputBuffer>();
         _playerData = GetComponent<PlayerData>();
         _playerMove = GetComponent<PlayerMove>();
+        _playerJump = GetComponent<PlayerJump>();
+        _groundCheck = GetComponentInChildren<GroundCheck>();
     }
 
     void Start()
@@ -35,6 +38,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnInputMove(InputAction.CallbackContext context)
     {
+        if (IsGrounded)
+        {
+            _playerJump?.Jump();
+        } 
         _playerMove?.Move(context.ReadValue<Vector2>());
     }
 }

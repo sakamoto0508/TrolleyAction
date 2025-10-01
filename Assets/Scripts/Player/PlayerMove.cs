@@ -2,17 +2,10 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour, IStartSetVariables
 {
-    private Rigidbody _rb;
     private float _moveSpeed;
-    private float _jumpForce;
     private float _laneDistance;
     private int _currentLane = 1;
     private Vector3 _targetPosition;
-
-    private void Start()
-    {
-        _rb = GetComponent<Rigidbody>();
-    }
 
     private void FixedUpdate()
     {
@@ -25,7 +18,6 @@ public class PlayerMove : MonoBehaviour, IStartSetVariables
     public void StartSetVariables(PlayerData playerData)
     {
         _moveSpeed = playerData.MoveSpeed;
-        _jumpForce = playerData.JumpForce;
         _laneDistance = playerData.LaneDistance;
     }
 
@@ -40,7 +32,7 @@ public class PlayerMove : MonoBehaviour, IStartSetVariables
             MoveLane(1);
         }
     }
-    
+
     private void MoveLane(int direction)
     {
         //Mathf.Clamp‚Å”ÍˆÍ“à‚ÉŽû‚ß‚é
@@ -50,6 +42,6 @@ public class PlayerMove : MonoBehaviour, IStartSetVariables
 
     private void UpdateTargetPosition()
     {
-        _targetPosition=new Vector3 ((_currentLane-1)*_laneDistance,transform.position.y,1f);
+        _targetPosition = new Vector3((_currentLane - 1) * _laneDistance, transform.position.y, 1f);
     }
 }
