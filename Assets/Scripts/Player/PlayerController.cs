@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-[RequireComponent(typeof(InputBuffer),typeof(PlayerData))]
+[RequireComponent(typeof(InputBuffer), typeof(PlayerData))]
 public class PlayerController : MonoBehaviour
 {
+    public bool IsGrounded { get; private set; } = true;
     private InputBuffer _inputBuffer;
     private PlayerData _playerData;
     private PlayerMove _playerMove;
+    private GroundCheck _groundCheck;
 
     private void Awake()
     {
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        IsGrounded = _groundCheck.ReturnIsGrounded();
     }
 
     private void OnInputMove(InputAction.CallbackContext context)
