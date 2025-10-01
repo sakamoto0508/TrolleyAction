@@ -17,14 +17,12 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _inputBuffer.MoveAction.started += OnInputMove;
-        _inputBuffer.JumpAction.started += OnInputJump;
         _playerMove.StartSetVariables(_playerData);
     }
 
     private void OnDestroy()
     {
         _inputBuffer.MoveAction.started -= OnInputMove;
-        _inputBuffer.JumpAction.started -= OnInputJump;
     }
 
     // Update is called once per frame
