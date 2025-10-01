@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+[RequireComponent(typeof(InputBuffer),typeof(PlayerData))]
 public class PlayerController : MonoBehaviour
 {
     private InputBuffer _inputBuffer;
@@ -33,11 +33,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnInputMove(InputAction.CallbackContext context)
     {
-        
-    }
-
-    private void OnInputJump(InputAction.CallbackContext context)
-    {
-
+        _playerMove?.Move(context.ReadValue<Vector2>());
     }
 }
