@@ -2,15 +2,9 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _jumpForce;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float MoveSpeed => _moveSpeed;
+    public float JumpForce => _jumpForce;
 }
