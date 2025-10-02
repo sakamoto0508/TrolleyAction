@@ -9,10 +9,7 @@ public class PlayerMove : MonoBehaviour, IStartSetVariables
 
     private void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            _targetPosition,
-            _moveSpeed * Time.deltaTime);
+        
     }
 
     public void StartSetVariables(PlayerData playerData)
@@ -25,23 +22,11 @@ public class PlayerMove : MonoBehaviour, IStartSetVariables
     {
         if (input.x < 0)
         {
-            MoveLane(-1);
+
         }
         else if (input.x > 0)
         {
-            MoveLane(1);
+
         }
-    }
-
-    private void MoveLane(int direction)
-    {
-        //Mathf.Clamp‚Å”ÍˆÍ“à‚ÉŽû‚ß‚é
-        _currentLane = Mathf.Clamp(_currentLane + direction, 0, 2);
-        UpdateTargetPosition();
-    }
-
-    private void UpdateTargetPosition()
-    {
-        _targetPosition = new Vector3((_currentLane - 1) * _laneDistance, transform.position.y, 1f);
     }
 }

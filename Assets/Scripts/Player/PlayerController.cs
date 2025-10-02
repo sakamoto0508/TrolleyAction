@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _inputBuffer.MoveAction.started += OnInputMove;
+        _inputBuffer.JumpAction.started += OnInputJump;
         _playerMove.StartSetVariables(_playerData);
     }
 
@@ -41,7 +42,12 @@ public class PlayerController : MonoBehaviour
         if (IsGrounded)
         {
             _playerJump?.Jump();
-        } 
-        _playerMove?.Move(context.ReadValue<Vector2>());
+            _playerMove?.Move(context.ReadValue<Vector2>());
+        }
+    }
+
+    private void OnInputJump(InputAction.CallbackContext context)
+    {
+
     }
 }
