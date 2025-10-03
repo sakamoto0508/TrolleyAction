@@ -18,11 +18,11 @@ public class InputBuffer : MonoBehaviour
 
     private void Awake()
     {
-        if(TryGetComponent<PlayerInput>(out var playerInput))
+        if (TryGetComponent<PlayerInput>(out var playerInput))
         {
             _moveAction = playerInput.actions[MOVE_ACTION];
+            _jumpAction = playerInput.actions[JUMP_ACTION];
             _attackAction = playerInput.actions[ATTACK_ACTION];
-            _attackAction = playerInput.actions[ATTACK_ACTION]; 
         }
     }
 }

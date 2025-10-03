@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
-    private bool _isGrounded=true;
+    public bool IsGrounded = true;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.CompareTag("Lane"))
+        if (collision.collider.CompareTag("Lane"))
         {
-            _isGrounded = true;
+            IsGrounded = true;
         }
     }
 
     public bool ReturnIsGrounded()
     {
-        return _isGrounded;
+        return IsGrounded;
     }
 }

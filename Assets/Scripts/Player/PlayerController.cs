@@ -24,11 +24,13 @@ public class PlayerController : MonoBehaviour
         _inputBuffer.MoveAction.started += OnInputMove;
         _inputBuffer.JumpAction.started += OnInputJump;
         _playerMove.StartSetVariables(_playerData);
+        _playerJump.StartSetVariables(_playerData);
     }
 
     private void OnDestroy()
     {
         _inputBuffer.MoveAction.started -= OnInputMove;
+        _inputBuffer.JumpAction.started -= OnInputJump;
     }
 
     // Update is called once per frame
@@ -48,6 +50,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnInputJump(InputAction.CallbackContext context)
     {
-
+        if (IsGrounded)
+        {
+            _playerJump?.Jump();
+        }
     }
 }
